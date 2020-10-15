@@ -1,0 +1,11 @@
+rootProject.name = "SofarNote"
+
+include ':app'
+
+include ':framework:widget'
+include ':framework:utility'
+include ':framework:network'
+
+include ':core:base'
+include ':core:skin'
+include ':core:fun'
