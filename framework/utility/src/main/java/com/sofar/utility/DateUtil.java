@@ -1,6 +1,8 @@
 package com.sofar.utility;
 
 
+import android.text.format.DateUtils;
+
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
@@ -11,6 +13,7 @@ import java.util.Date;
 public class DateUtil {
 
   public static final SimpleDateFormat DEFAULT_DATE_FORMAT = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+  public static final SimpleDateFormat DAY_DATE_FORMAT = new SimpleDateFormat("yyyy-MM-dd");
 
   private DateUtil() {
     throw new AssertionError();
@@ -72,24 +75,41 @@ public class DateUtil {
   }
 
   /**
-   * 获取给定time时间 几天后的时间
+   * 获取给定time时间 几天前的时间
    */
-  public static Calendar getDateBefor(long time, int day) {
+  public static long getDateBefore(long time, int day) {
     Calendar now = Calendar.getInstance();
     now.setTimeInMillis(time);
     now.set(Calendar.DATE, now.get(Calendar.DATE) - day);
-    return now;
+    return now.getTimeInMillis();
   }
 
   /**
    * 获取给定time时间 几天后的时间
    */
-  public static Calendar getDateAfter(long time, int day) {
+  public static long getDateAfter(long time, int day) {
     Calendar now = Calendar.getInstance();
     now.setTimeInMillis(time);
     now.set(Calendar.DATE, now.get(Calendar.DATE) + day);
-    return now;
+    return now.getTimeInMillis();
   }
 
+  /**
+   * 今天0点的时间戳
+   */
+  public static long getTodayZeroTime() {
+    Calendar calendar = Calendar.getInstance();
+    calendar.set(Calendar.HOUR_OF_DAY, 0);
+    calendar.set(Calendar.MINUTE, 0);
+    calendar.set(Calendar.SECOND, 0);
+    return calendar.getTimeInMillis();
+  }
+
+  /**
+   * 今天23点59分59秒的毫秒数
+   */
+  public static long getTodayEndTime() {
+    return getTodayZeroTime() + DateUtils.DAY_IN_MILLIS - 1000;
+  }
 
 }

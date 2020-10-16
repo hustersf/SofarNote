@@ -8,6 +8,15 @@
     <attr name="spaceWidth" format="dimension"></attr>
   </declare-styleable>
 
+  <!--音乐进度控件-->
+  <declare-styleable name="MusicProgress">
+    <attr name="reachColor" format="color"></attr>
+    <attr name="unReachColor" format="color"></attr>
+    <attr name="reachHeight" format="dimension"></attr>
+    <attr name="unReachHeight" format="dimension"></attr>
+    <attr name="roundConner" format="boolean"></attr>
+  </declare-styleable>
+
   <!--针对圆角布局/ImageView的属性-->
   <attr name="round_as_circle" format="boolean" />
   <attr name="round_corner" format="dimension" />
